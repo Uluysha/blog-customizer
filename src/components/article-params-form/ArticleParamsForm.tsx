@@ -17,6 +17,7 @@ import { Separator } from 'src/ui/separator';
 import { Text } from 'src/ui/text';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { saveArticleState } from 'src/index';
+import clsx from 'clsx';
 
 type TSpacing = '4px' | '24px' | '50px' | '90px' | '207px';
 
@@ -107,9 +108,9 @@ export const ArticleParamsForm = ({
 				onClick={() => setArrowButtonOpen(!isArrowButtonOpen)}
 			/>
 			<aside
-				className={
-					isArrowButtonOpen ? styles.container_open : styles.container
-				}>
+				className={clsx(styles.container, {
+					[styles.container_open]: isArrowButtonOpen,
+				})}>
 				<form className={styles.form} onSubmit={articleApply}>
 					<Text as='h2' size={31} weight={800} uppercase={true}>
 						Задайте параметры
